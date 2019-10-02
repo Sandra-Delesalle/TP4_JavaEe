@@ -14,23 +14,25 @@ public class Multijoueur implements bowling.MultiPlayerGame{
     private String[] Players;
     private int ActualPlayer;
     private int NmPlayers;
+    private SinglePlayerGame Partie;
     
     public Multijoueur(){
-        this.NmPlayers = -1;
-        this.ActualPlayer = -1;
-        this.Players = null;
+        NmPlayers = -1;
+        ActualPlayer = -1;
+        Players = null;
     }
 
     @Override
     public String startNewGame(String[] playerName) throws Exception {
-        this.NmPlayers = playerName.length;
-        this.Players = new String[this.NmPlayers];
+        NmPlayers = playerName.length;
+        Players = new String[NmPlayers];
         
-        for (int i = 0 ; i<this.NmPlayers ; i++){
-            this.Players[i] = playerName[i];
+        for (int i = 0 ; i<NmPlayers ; i++){
+            Players[i] = playerName[i];
+            Partie = new SinglePlayerGame();
         }
-        this.ActualPlayer = 0;
-        return "Prochain tir:";
+        ActualPlayer = 0;
+        return "Prochain tir : " + Players[0] + ", tour n° 1, boule n° 1";
     }
 
     @Override
